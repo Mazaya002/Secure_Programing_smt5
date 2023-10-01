@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+session_start();
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +17,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </head>
 
-<!-- Alert Error -->
-<div class="alert alert-error">Wow. Error!</div>
+<?php
+if(isset($_SESSION["error_message"])) {
+?>
+    <div class="alert alert-error"><?php echo $_SESSION["error_message"]; ?></div>
+<?php
+    // Clear the session variable after displaying it
+    unset($_SESSION["error_message"]);
+}
+?>
+
+<?php
+if(isset($_SESSION["success_message"])) {
+?>
+    <div class="alert alert-success"><?php echo $_SESSION["success_message"]; ?></div>
+<?php
+    // Clear the session variable after displaying it
+    unset($_SESSION["success_message"]);
+}
+?>
+
+<!-- Alert Error --> 
+<!-- <div class="alert alert-error">Wow. Error!</div>  -->
 
 <!-- Alert Success -->
-<div class="alert alert-success">Wow. Success!</div>
+<!-- <div class="alert alert-success">Wow. Success!</div> -->
+
+
+
 
 <body class="hack dark">
     <div class="grid main-form">
         <form action="controllers/AuthController.php" method="POST">
-            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>" />
+            <!-- <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>" /> -->
+            <!-- <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" /> -->
             <fieldset class="form-group form-success">
                 <label for="username">USERNAME</label>
                 <input id="username" name="username" type="text" placeholder="" class="form-control">
