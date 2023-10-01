@@ -20,7 +20,7 @@ session_start();
 <?php
 if(isset($_SESSION["error_message"])) {
 ?>
-    <div class="alert alert-error"><?php echo $_SESSION["error_message"]; ?></div>
+    <div class="alert alert-error">Wow. Error!</div>
 <?php
     // Clear the session variable after displaying it
     unset($_SESSION["error_message"]);
@@ -30,7 +30,7 @@ if(isset($_SESSION["error_message"])) {
 <?php
 if(isset($_SESSION["success_message"])) {
 ?>
-    <div class="alert alert-success"><?php echo $_SESSION["success_message"]; ?></div>
+    <div class="alert alert-success">Wow. Success!</div>
 <?php
     // Clear the session variable after displaying it
     unset($_SESSION["success_message"]);
@@ -50,7 +50,7 @@ if(isset($_SESSION["success_message"])) {
     <div class="grid main-form">
         <form action="controllers/AuthController.php" method="POST">
             <!-- <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>" /> -->
-            <!-- <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" /> -->
+           
             <fieldset class="form-group form-success">
                 <label for="username">USERNAME</label>
                 <input id="username" name="username" type="text" placeholder="" class="form-control">
